@@ -31,7 +31,7 @@ h2 {
     width:30%;
     padding:10px;
     background:#efefef;
-    height:100%;
+    height:20%;
 }
 
 p.date {
@@ -93,4 +93,10 @@ input[type=submit] {
 .pagination{
     float:left;
     margin:500px 0 0px -600px
+}
+
+.content-post{
+    background:#efefef;
+    padding:0.5em;
+    margin:0.5em
 }
