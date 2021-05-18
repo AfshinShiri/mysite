@@ -9,4 +9,8 @@
     <p class="body-post">
         {{post.body|linebreaks}}
     </p>
+
+    <p class="dokme_eshterak">
+    <a href="{% url 'blog:post_share' post.id %}">SHARE THIS POST</a>
+    </p>
 {% endblock %}

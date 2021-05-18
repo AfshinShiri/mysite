@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "blog/base.html" %}
+{% block title %} SHARE POST {% endblock %}
+{% block content %}
+    <h1> SHARE POST </h1>
+    {% if sent %}
+        <h1>E-mail sent successfuly sent</h1>
+        <p>
+            "{{post.title}}" was successfuly sent to {{form.cleaned_data.to}}.
+        </p>
+    {% else %}
+        <h1>SHARE post "{{post.title}}" BY Email</h1>
+        <form class="form-email" method="post">
+            {{form}}
+            {% csrf_token %}
+            <input type="submit" value="Send-Email">
+        </form>
+    {% endif %}
+{% endblock %}
