@@ -92,11 +92,10 @@ input[type=submit] {
 }
 .pagination{
     float:left;
-    margin:500px 0 0px -600px
 }
 
 .content-post{
     background:#efefef;
-    padding:0.5em;
-    margin:0.5em
+    padding:0.3em;
+    margin:0.2em
 }
