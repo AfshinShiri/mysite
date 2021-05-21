@@ -13,4 +13,31 @@
     <p class="dokme_eshterak">
     <a href="{% url 'blog:post_share' post.id %}">SHARE THIS POST</a>
     </p>
+    {% with comments.count as total_comments %}
+        <h2 class="total_comments">
+            {{ total_comments }} comment {{ total_comments|pluralize }}
+        </h2>
+    {% endwith %}
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="comment_info">
+                Comment {{ forloop.counter }} by {{ comment.name }} {{comment.created}}
+            </p>
+            <p class="comment_body">{{ comment.body|linebreaks }}</p>
+        </div>
+    {% empty %}
+        <p class="comment_first"> اولین نظر را شما بدید</p>
+    {% endfor %}
+
+
+    {% if new_comment %}
+        <h2> نظر شما ثبت شد با تشکر </h2>
+    {% else %}
+        <h2 class="Addnew_comment">نظر دهید</h2><hr>
+        <form method="post">
+        {{ comment_form }}
+        {% csrf_token %}
+        <input class="button_formComment" type="submit" value="ثبت نظر">
+        </form>
+    {% endif %}
 {% endblock %}
