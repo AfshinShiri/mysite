@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 
 class PublishedManager(models.Manager):
@@ -20,7 +21,7 @@ class Post(models.Model):
     update = models.DateTimeField(auto_now=True)         #tarikhe lahze update
     publish = models.DateTimeField(default=timezone.now) #tarikhe enteshar---timezone lahze knonie enteshar
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default= 'draft')
-
+    tags = TaggableManager()
     objects = models.Manager() # mangere default
     published = PublishedManager() # manage khodemon
 
