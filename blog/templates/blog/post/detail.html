@@ -13,6 +13,16 @@
     <p class="dokme_eshterak">
     <a href="{% url 'blog:post_share' post.id %}">SHARE THIS POST</a>
     </p>
+    <h2>similar post</h2>
+    {% for post in similar_post %}
+        <p>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </p>
+    {% empty %}}
+        <p>NO similar post</p>
+    {% endfor %}
+
+
     {% with comments.count as total_comments %}
         <h2 class="total_comments">
             {{ total_comments }} comment {{ total_comments|pluralize }}
