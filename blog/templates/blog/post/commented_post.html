@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <ul>
-    {% for comment in commented %}
+    {% for post in commented %}
     <li>
-        <a href="{{ post.get_absolute_url }}"> {{ comment.title }} </a>
+        <a href="{{ post.get_absolute_url }}"> {{ post.title }} </a>
     </li>
     {% endfor %}
 </ul>
