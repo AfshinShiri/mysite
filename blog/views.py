@@ -14,7 +14,7 @@ def post_list(request, tag_slug=None):
         tag = get_object_or_404(Tag, slug=tag_slug)
         object_list = object_list.filter(tags__in=[tag])
 
-    paginator = Paginator(object_list,3)
+    paginator = Paginator(object_list, 3)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -22,7 +22,7 @@ def post_list(request, tag_slug=None):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    return render(request, 'blog/post/list.html', {'posts': posts, 'page': page, 'tag':tag})
+    return render(request, 'blog/post/list.html', {'posts': posts, 'page': page, 'tag': tag})
 
 
 def post_detail(request, year, month, day, post):
