@@ -1,4 +1,5 @@
 {% load static %}
+{% load blog_tags %}
 <!doctype html>
 <html>
 <head>
@@ -13,7 +14,15 @@
 </div>
 <div id="sidebar">
     <h2>Afshin shiri</h2>
-    <p> This is my blog </p>
+    <p> This is my blog me have "{% total_post %}" posts</p>
+    <div class="latest_post">
+        <h3>آخرین پست ها </h3>
+        {% show_latest_post %}
+    </div>
+    <div class="get_post_comments_posts">
+        <h3> پست هایی که بیشترین نظر را گرفتند </h3>
+        {% get_most_commented_posts %}
+    </div>
 </div>
 </body>
 </html>
