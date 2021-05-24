@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
 {% block title %}MY BLOG{% endblock %}
 {% block content %}
 <h1> MY BLOG </h1>
@@ -16,11 +17,12 @@
     <p class="date">
         published {{post.publish}} by {{post.author}}
     </p>
-        {{post.body|truncatewords:20|linebreaks}}
+        {{post.body|truncatewords:20|markdown}}
             <p class="tags">
+                Tags:
                 {% for tag in post.tags.all %}
                     <a href="{% url 'blog:post_list_by_tag' tag.slug %}">
-                        Tags:{{tag.name}}
+                        {{tag.name}}
                     </a>
                 {% if not forloop.last %}, {%endif%}
                 {% endfor %}
