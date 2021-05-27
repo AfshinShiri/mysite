@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
+
 ]
 
 MIDDLEWARE = [
@@ -81,8 +82,8 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blog',
-        'USER': 'afshin',
+        'NAME': 'pakaretem',
+        'USER': 'afshini',
         'PASSWORD': '1371a1376',
     }
 }
