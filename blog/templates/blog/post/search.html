@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% block title %} Search {%endblock%}
+{% block content %}
+{% if query %}
+    <h1>posts containing "{{ query }}"</h1>
+    <h3>
+        {% with result.count as total_result %}
+            Found {{ total_result }} result {{ total_result|pluralize}}
+        {% endwith %}
+    </h3>
+
+        {% for post in result %}
+            <h4><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h4>
+                {{ post.body|markdown|truncatewords_html:5}}
+
+        {% empty %}
+                <h2>جستجو مورد نظر یافت نشد</h2>
+        {% endfor %}
+        <p class="search_again"><a href="{% url 'blog:post_search' %}">Search Again</a> </p>
+        {% else %}
+            <h1 class="Search_Post"> Search Post</h1>
+            <form method="get">
+                {{form.as_p}}
+                <input type="submit" value="Search">
+            </form>
+{% endif %}
+{% endblock %}
